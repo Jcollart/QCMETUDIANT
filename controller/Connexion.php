@@ -4,9 +4,9 @@
 
     private $server = "mysql:hoste=localhost;dbname=qcm" ;
 
-    private $user = "root";
+    private $user = "commun";
 
-    private $password = "";
+    private $password = "root";
     
     private $security = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -16,18 +16,14 @@
 
     /* Fonction de connexion à la bdd en pdo */
     public function openConnexion()
-
     {
         try
         {
-
             $this->bdd = new PDO($this->server, $this->user, $this->password, $this->security);
-
             return $this->bdd;
         }
         catch (PDOException $e)
         {
-
             echo "Erreur de connexion: " . $e->getMessage();
         }
     }
