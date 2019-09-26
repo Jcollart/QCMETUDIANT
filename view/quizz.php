@@ -2,6 +2,9 @@
 include_once '../controller/QuestController.php';
 $questcontroller = new QuestController;
 $result = $questcontroller->affiche_quizz(93);
+
+$currentStep = 1;
+$maxStep = 15;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,36 +13,91 @@ $result = $questcontroller->affiche_quizz(93);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QCM CAROLO EXPRESS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/index.css">
     <link rel="stylesheet" href="../public/css/admin.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <section>
-        <br>
 
+    <div class="mt-5">
+        <div class="row mx-0">
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+            <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
+                <div class="bg-light shadow rounded px-4 pt-4 pb-2">
+                    <div class="progress" style="">
+                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="text-center my-4">
+                        <img src="../public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
+                    </div>
+                    <form method="post">
+                        <h2 class="h4 text-center">
+                            <span class="badge badge-pill badge-dark" style="padding: .5rem 1rem;">
+                                Étape <?= $currentStep ?> / <?= $maxStep ?>
+                            </span>
+                        </h2>
+                        <hr>
+                        <div class="my-4 form-group">
+                            <label class="font-weight-bold">Code d'accès</label><br>
+                            <input class="form-control" type="text" placeholder="****" name="access_code" required />
+                        </div>
+                        <div>
+                            <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-2">
+                        <i class="fas fa-chevron-down" style="font-size: 1.2em" onclick="showMap()"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+        </div>
+    </div>
+    <!-- <div class=">
         <div class="map">
-            <h1>QCM CAROLO EXPRESS</h1>
-            <center style="margin-top: 2rem;">
-                <iframe 
-                    width="90%" height="500" frameborder="0" 
-                    scrolling="no" marginheight="0" marginwidth="0" 
+
+        </div>
+    </div> -->
+    <div class="map">
+        <hr>
+        <h3>Erreur quand la map est en display none</h3>
+        <div class="row mx-0">
+            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-0">
+                <iframe class="shadow-lg"
+                    width="100%" height="400" frameborder="0"
+                    scrolling="no" marginheight="0" marginwidth="0"
                     src="https://www.openstreetmap.org/export/embed.html?bbox=4.679832458496095%2C49.75884086990659%2C4.751501083374023%2C49.78442298138881&amp;layer=transportmap" 
                     style="">
                 </iframe>
-            </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
-        <br>
-    </section>
+    </div>
 
-    <div class="affiche d-flex flex-wrap text-center justify-content-center column">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="affiche d-flex flex-wrap text-center justify-content-center column"> -->
 
 
         <?php
         for ($j = 0; $j < sizeof($result); $j++) {
             ?>
-            <div class="main_question w-100">
+            <!-- <div class="main_question w-100">
                 <label for="inputName"></label><br>
                 <input type="name" class="form-control" id="code" placeholder="Entrez votre code"><br>
                 <br><br>
@@ -49,15 +107,15 @@ $result = $questcontroller->affiche_quizz(93);
                 <hr>
 
 
-            </div>
+            </div> -->
         <?php
         }
         ?>
-        <hr>
+        <!-- <hr> -->
         <!--</div>-->
-        <hr>
+        <!-- <hr>
         <button type="submit" name="endqcm">Valider mes réponses</button>
-        <hr>
+        <hr> -->
         <!-- </form> -->
         <!-- </div>-->
 
@@ -70,6 +128,10 @@ $result = $questcontroller->affiche_quizz(93);
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
         <script>
+            function showMap() {
+                $('.map').fadeToggle();
+            }
+
             function test(e) {
                 var code = $("#code").val();
                 var id = $(e).data('id');
