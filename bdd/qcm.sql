@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 26 sep. 2019 à 13:03
+-- Généré le :  jeu. 26 sep. 2019 à 14:32
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.7
 
@@ -241,8 +241,8 @@ INSERT INTO `question` (`id`, `label_question`, `question`, `code`) VALUES
 (53, 'MusÃ©e Arthur Rimbaud', 'Le musÃ©e est ouvert gratuitement pour les habitants de la ville, et pour les moins de 26 ans. Demandez Ã  passer dans le Â« Wasserfall Â». Qu\'y trouvez-vous ?', '5555'),
 (54, 'Quai Arthur Rimbaud', 'Entre le musÃ©e et la maison des Ailleurs, l\'artiste quÃ©bÃ©cois Michel Goulet a rÃ©alisÃ© une Å“uvre contemporaine. Sur quoi a-t-il inscrit des poÃ¨mes ?', '1990'),
 (55, 'Statue de Charles de Gonzague', 'Quel est le blason de Charleville ?', '1025'),
-(56, 'Rue BÃ©rÃ©govoy', 'Trouvez la maison natale d\'Arthur Rimbaud. Quelle boutique est-ce aujourd\'hui ?', '1998'),
-(57, 'Boulangerie Billard, rue de la RÃ©publique', 'Le Carolo est une cÃ©lÃ¨bre pÃ¢tisserie locale. Quels en sont les ingrÃ©dients ?', '2729'),
+(56, 'Maison Arthur Rimbaud-12 Rue BÃ©rÃ©govoy', 'Trouvez la maison natale d\'Arthur Rimbaud. Quelle boutique est-ce aujourd\'hui ?', '1998'),
+(57, 'Boulangerie Billard-Boulangerie et Café-6 rue de la RÃ©publique', 'Le Carolo est une cÃ©lÃ¨bre pÃ¢tisserie locale. Quels en sont les ingrÃ©dients ?', '2729'),
 (58, 'Mairie, au coin de la Place Ducale', 'Trouvez les escaliers dans le coin de la Place, au bord de la mairie. Quels curieux bas-reliefs trouve-ton sur le mur qui longe l\'escalier?', '2019');
 
 -- --------------------------------------------------------
@@ -300,20 +300,15 @@ INSERT INTO `reponse` (`id`, `reponse`, `valid`) VALUES
 (138, 'une tÃªte de lion entourÃ©e d\'un soleil', 0),
 (139, 'une Ã©pÃ©e surmontÃ©e d\'un soleil, avec deux rameaux', 1),
 (140, 'un dauphin avec une couronne', 0),
-(141, 'un boulanger', 0),
-(142, 'une boutique de bijoux', 0),
-(143, 'pÃ¢te d\'amandes et feuillantines', 0),
-(144, 'noisettes et ganache au chocolat', 0),
-(145, 'meringue et crÃ¨me au pralin', 1),
-(146, 'des tÃªtes', 1),
-(147, 'des soleils', 0),
-(148, 'des palmes', 0),
-(149, 'reponse1', 0),
-(150, 'reponse2', 1),
-(151, 'reponse3', 0),
-(152, 'reponse21', 1),
-(153, 'reponse22', 0),
-(154, 'reponse23', 0);
+(141, 'une librairie', 1),
+(142, 'un boulanger', 0),
+(143, 'une boutique à bijoux', 0),
+(144, 'pâte d\'amandes et feuillantines', 0),
+(145, 'noisettes et ganache au chocolat', 0),
+(146, 'meringue et crème au pralin', 1),
+(147, 'des têtes', 1),
+(148, 'des soleils', 0),
+(149, 'des palmes', 0);
 
 --
 -- Contraintes pour les tables déchargées

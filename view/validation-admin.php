@@ -18,7 +18,7 @@ $req-> closeCursor();
 
 if (!$resultat)
 {
-    echo "J'ai rien reçu, j'ai un pb";
+    echo "J'ai rien reçu, il y a un pb";
 }
 else{
 
