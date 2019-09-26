@@ -14,7 +14,6 @@ h1{
 }
 .affiche{
   background:url(img/fond.jpg);
-  background-size: cover;
   border: solid 0.5px white;
   box-shadow: 5px 5px 10px white;
   margin:0.5em;
@@ -37,7 +36,7 @@ h1{
   height:600px;
   }
   .map img:hover {
-  width:900px;
-  height:600px;
+  width:1000px;
+  height:800px;
   }
 
