@@ -1,0 +1,41 @@
+               // if($j == 0) {
+                //    $tmp = $result[0]['id'];
+                //     echo '<form class="affiche p-2" action="../modele/endqcm.php" method="POST">';
+                //     echo '<div class="affiche p-2" data-id="'.$result[$j]['id'].'" onclick="test(this)"';
+                //     echo '<h1>';
+                //     echo $result[$j]['label_question'].'</h1><br>';
+                //     echo '<h4>';
+                //     echo $result[$j]['question'].'</h4><br>' ;}
+                
+        
+                //    if($result[$j]['id'] != $tmp){
+                //     $tmp = $result[$j]['id'];
+                //     echo '</div><br><div class="affiche" data-id="'.$result[$j]['id'].'"  onclick="test(this)"><h2>';
+                //     echo $result[$j]['label_question'].'</h2><br>';
+                //     echo $result[$j]['question'].'</h2><br>';
+                //     ?>
+        <!--  <div class="main_question">
+         <form>
+         <label for="inputName">Ecrivez votre code :</label><br>
+    <input type="name" class="form-control" id="code" placeholder="Entrez votre code"><br>
+    <br><br>
+    <button class="button button-primary"  value="quizz.php" type="submit"> Envoi du code </button>
+          </form> -->
+
+        <!-- <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="answer<?php echo $j ?>"
+                    value="<?= $result[$j]['valid'] ?>">
+                <label class="form-check-label" for="answer<?php echo $j ?>"><?= $result[$j]['reponse'] ?></label>
+            </div> -->
+
+        <?php
+            //    } else { ?>
+        <!-- <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="answer<?php echo $j ?>"
+                    value="<?= $result[$j]['valid'] ?>">
+                <label class="form-check-label" for="answer<?php echo $j ?>"><?= $result[$j]['reponse'] ?></label><br>
+            </div> -->
+
+
+        <?php }
+        // } ?>
