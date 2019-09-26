@@ -4,10 +4,11 @@ html{
 }
 body{
   font-family: arial;
-  font-size: 5.5em;
-  background:url(img/fond.jpg);
-
-  background-size: cover no-repeat;
+  min-height: 100vh;
+  background: rgb(237,139,42);
+  background: -moz-linear-gradient(45deg, rgba(237,139,42,1) 0%, rgba(217,76,32,1) 100%);
+  background: -webkit-linear-gradient(45deg, rgba(237,139,42,1) 0%,rgba(217,76,32,1) 100%);
+  background: linear-gradient(45deg, rgba(237,139,42,1) 0%,rgba(217,76,32,1) 100%);
 }
 
 .bg-red{
