@@ -6,7 +6,12 @@ body{
   font-family: arial;
   font-size: 5.5em;
   background:url(img/fond.jpg);
-  background-size: cover;
+
+  background-size: cover no-repeat;
+}
+
+.bg-red{
+  background: #BC3421 !important;
 }
 
 h1{

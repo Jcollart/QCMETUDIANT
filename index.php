@@ -15,45 +15,35 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
     crossorigin="anonymous">
   </head>
-  <body class="d-flex w-100 justify-content-center text-center">
-       <center><h1><font size="+3" >CAROLO EXPRESS</font></h1><br><br><br>
-
-      <div class="form">
-       <form action="view/validation-admin.php" method="post">
-        <div>
-         <center><font size="+2">CONNEXION AU QCM</font></center>
-        </div><br>
-        <div>
-         <label><b>Nom de l'equipe</b></label>
-         <input type="text" placeholder="Entrer le nom d'utilisateur" name="nom_team" required/><br>
-        </div><br>
-        <div>
-        <label><b>Mot de passe</b></label>
-        <input type="text" placeholder="Entrer le mot de passe" name="password" required/><br>
-        </div><br>
-        <div>
-         <input name="submit" type="submit" value="Envoyer" />
+  <body>
+      <div class="py-5">
+        <div class="row mx-0">
+          <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+          <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
+            <div class="bg-light shadow rounded p-4">
+              <div class="text-center my-4">
+                <img src="./public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
+              </div>
+              <form action="view/validation-admin.php" method="post">
+                  <h2 class="h4 text-center">CONNEXION AU QCM</h2>
+                  <hr>
+                  <div class="my-4 form-group">
+                    <label class="font-weight-bold">Nom de l'equipe</label><br>
+                    <input class="form-control" type="text" placeholder="Entrer le nom d'utilisateur" name="nom_team" required/>
+                  </div>
+                  <div class="my-4 form-group">
+                    <label class="font-weight-bold">Mot de passe</label><br>
+                    <input class="form-control" type="password" placeholder="Entrer le mot de passe" name="password" required/>
+                  </div>
+                  <div>
+                    <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Envoyer</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
-       </form>
-      </div><br>
-
-        
-    
-
-
-    <!--<div class="container-fluid d-flex flex-wrap col-12 justify-content-center">
-      <div class="row w-100 d-flex">
-      <h1 class="col-12">Quizz du Carolo Express</h1>
       </div>
-    
-      <div class="row w-100 justify-content-center">
-        <a href="view/new_qcm.php">Créer QCM</a> 
-      </div>
-      <div class="row d-flex row-wrap justify-content-around">
-        <?php// include_once 'view/qcm.php'; ?>
-      </div>
-    </div>-->
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 

@@ -42,7 +42,7 @@ body {
 
     
 
-    label {
+    .form label {
 
       /* Pour être sûrs que toutes les étiquettes ont même taille et sont correctement alignées */
 
@@ -56,7 +56,7 @@ body {
 
     
 
-    select {
+    .form select {
 
       /* Pour s'assurer que tous les champs texte ont la même police.
 
@@ -84,7 +84,7 @@ body {
 
     
 
-    select:focus {
+    .form select:focus {
 
       /* Pour souligner légèrement les éléments actifs */
 
@@ -94,7 +94,7 @@ body {
 
   
 
-    input {
+    .form input {
 
       /* Pour s'assurer que tous les champs texte ont la même police.
 
@@ -122,7 +122,7 @@ body {
 
     
 
-    input:focus {
+    .form input:focus {
 
       /* Pour souligner légèrement les éléments actifs */
 
@@ -142,7 +142,7 @@ body {
 
     
 
-    button {
+    .form button {
 
       /* Cette marge supplémentaire représente grosso modo le même espace que celui
 
