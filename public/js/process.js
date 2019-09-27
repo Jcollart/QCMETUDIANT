@@ -143,7 +143,7 @@ $('form').on('submit', function(e) {
         case TYPES.CODE:
             datas = {
                 SUBMIT_CODE: true,
-                CODE: parseInt($("#access_code").val())
+                CODE: $("#access_code").val()
             };
 
             break;
