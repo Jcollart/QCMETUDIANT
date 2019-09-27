@@ -4,9 +4,9 @@
 
     private $server = "mysql:hoste=localhost;dbname=qcm" ;
 
-    private $user = "root";
+    private $user = "commun";
 
-    private $password = "";
+    private $password = "root";
     
     private $security = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
