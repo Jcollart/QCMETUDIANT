@@ -135,7 +135,7 @@ function IncreaseTimer() {
     time++;
     save.Time = time;
 
-    localStorage.setItem("save", JSON.stringify(save));
+    //localStorage.setItem("save", JSON.stringify(save));
 }
 
 function LaunchTimer() {
