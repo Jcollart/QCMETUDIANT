@@ -1,5 +1,8 @@
 <?php
 include_once '../controller/QuestController.php';
+if(!isset($_SESSION['nom_team'])){
+    header('Location: index.php');
+}
 $questcontroller = new QuestController;
 $result = $questcontroller->affiche_quizz(93);
 
@@ -146,8 +149,12 @@ $maxStep = 15;
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+        <script>
+            const team = `<?= $_SESSION['nom_team']; ?>`;
+        </script>
         <script src="../public/js/process.js"></script>
         <script>
+
             function showMap() {
                 $('.blur').fadeOut();
                 // $('.map').find('iframe').css('opacity','1');

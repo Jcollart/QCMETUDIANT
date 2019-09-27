@@ -23,7 +23,7 @@ if (!$resultat)
 else{
 
   if ($_POST['password'] == $resultat['password']) {
-      session_start();
+
       $_SESSION['id_etudiant'] = $resultat['id_etudiant'];
       $_SESSION['nom_team'] = $nom_team;
 

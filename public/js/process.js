@@ -4,7 +4,7 @@ const TYPES = {
 };
 
 var CurrentStep = 1;
-const MaxStep = 15;
+const MaxStep = 3;
 
 var CurrentType = TYPES.CODE;
 var CurrentQuestion = null;
@@ -128,6 +128,19 @@ function SetupFinish() {
     $(`.finish .responses .count`).html(responseCounter);
     $(`.finish .timer .time`).html(timer);
 
+
+    $.ajax({
+        url: "./fonctions.php",
+        method: "post",
+        data: {
+            name_team: team,
+            final_timer: timer,
+            good: responseCounter
+        },
+        success: function(res) {
+            console.log(res);
+        }
+    });
     //localStorage.removeItem("save")
 }
 
@@ -179,7 +192,11 @@ $('form').on('submit', function(e) {
             url: '../controller/ProcessController.php',
             data: datas,
             success: function(response) {
-                fResponse = JSON.parse(response);
+                if (response == "") {
+                    fResponse = [];
+                } else {
+                    fResponse = JSON.parse(response);
+                }
                 if (fResponse.length == 0) {
                     SetupAlertBlock("Ce code d'accès est introuvable, essayez en un autre.");
                     SetupCodeBlock();
@@ -226,6 +243,7 @@ $('form').on('submit', function(e) {
 });
 
 $(document).ready(function() {
+    console.log(team);
     const end = $('.finish');
     $(end).hide();
 

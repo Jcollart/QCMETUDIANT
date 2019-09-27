@@ -17,6 +17,24 @@ $bdd = new Connexion();
         }
     }
 
+    if(isset($_POST['name_team'], $_POST['good'], $_POST['final_timer'])){
+        $sql = ('
+            INSERT INTO `resultat`(`nom_team`, `good`, `final_time`) VALUES (:nom_team,:good,:final_time)
+        ');
+        $valeurs = [
+            'nom_team' => $_POST['name_team'],
+            'good' => $_POST['good'],
+            'final_time' => $_POST['final_timer']
+        ];
+
+        $req = $co->prepare($sql);
+        if($req->execute($valeurs)){
+            echo 'success';
+        } else {
+            echo 'error';
+        }
+    }
+
     if(isset($_POST['id']) && isset($_POST['code'])){
         // Chercher dans le SQL suivant l'id et le code 
          // Donne moi le resultat de la question "$_POST['id']" et du code "$_POST['code']"
