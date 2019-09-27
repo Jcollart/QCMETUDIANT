@@ -4,7 +4,7 @@ const TYPES = {
 };
 
 var CurrentStep = 1;
-const MaxStep = 3;
+const MaxStep = 15;
 
 var CurrentType = TYPES.CODE;
 var CurrentQuestion = null;
@@ -14,6 +14,8 @@ var time = 0;
 var IntervalRef = null;
 
 var save = {
+    Time: time,
+    ResponseCounter: responseCounter,
     Codes: [],
 };
 
@@ -125,10 +127,15 @@ function SetupFinish() {
 
     $(`.finish .responses .count`).html(responseCounter);
     $(`.finish .timer .time`).html(timer);
+
+    //localStorage.removeItem("save")
 }
 
 function IncreaseTimer() {
     time++;
+    save.Time = time;
+
+    localStorage.setItem("save", JSON.stringify(save));
 }
 
 function LaunchTimer() {
