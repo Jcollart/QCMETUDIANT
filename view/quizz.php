@@ -65,7 +65,14 @@ $maxStep = 15;
                 <div class="position-absolute blur">
                     <div class="d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="text-center">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at pulvinar nisi, sed pulvinar quam. Donec non congue justo. Nam maximus lorem a nunc dictum, eu efficitur magna pretium</p>
+                        <p>Lorsque vous arrivez sur un des endroits situés sur la carte, vous avez accès à un code <br> 
+                           que vous devez entrer (si vous entrez un mauvais code vous serez prévenu par un message <br>
+                           d'erreur) pour pouvoir acceder à la question correspondant à l'endroit où vous etes.<br>
+                           Vous avez le choix entre 3 reponses. Une fois la réponse choisie, vous devez valider <br>
+                           en appuyant sur le bouton. Ce qui vous permettra de choisir un autre point sur la carte<br>
+                           et ainsi de suite. Le temps de l'épreuve se déclenchera à l'entrée du premier code et <br>
+                           s'arretera à la validation de la derniere reponse.<br>
+                           <font size="+2" >BON COURAGE ET AMUSEZ VOUS BIEN !!</font> </p>
                         <button class="btn btn-light shadow" onclick="showMap()">Voir la carte</button>
                         </div>
                     </div>
