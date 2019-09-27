@@ -128,7 +128,6 @@ function SetupFinish() {
 }
 
 function IncreaseTimer() {
-    console.log(time);
     time++;
 }
 
