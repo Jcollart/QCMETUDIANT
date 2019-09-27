@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="public/css/admin.css">
   </head>
   <body>
+  <div class="main position-fixed"></div>
       <div class="py-5">
         <div class="row mx-0">
           <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>

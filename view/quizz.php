@@ -20,8 +20,8 @@ $maxStep = 15;
 </head>
 
 <body>
-
-    <div class="mt-5">
+    <div class="main position-fixed"></div>
+    <div class="my-5">
         <div class="row mx-0">
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
@@ -41,7 +41,7 @@ $maxStep = 15;
                         <hr>
                         <div class="my-4 form-group">
                             <label class="font-weight-bold">Code d'accès</label><br>
-                            <input class="form-control" type="text" placeholder="****" name="access_code" required />
+                            <input class="form-control" type="text" placeholder="****" name="access_code" required maxlength="4"/>
                         </div>
                         <div>
                             <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
@@ -61,8 +61,7 @@ $maxStep = 15;
         </div>
     </div> -->
     <div class="map">
-        <hr>
-        <h3>Erreur quand la map est en display none</h3>
+        <!-- <h3>Erreur quand la map est en display none</h3> -->
         <div class="row mx-0">
             <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
             <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-0">
@@ -76,7 +75,6 @@ $maxStep = 15;
             <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
     </div>
-
 
 
 

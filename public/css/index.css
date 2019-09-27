@@ -11,6 +11,15 @@ body{
   background: linear-gradient(45deg, rgba(237,139,42,1) 0%,rgba(217,76,32,1) 100%);
 }
 
+.main{
+  background: url(../img/eclair.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
 .bg-red{
   background: #BC3421 !important;
 }
