@@ -4,7 +4,7 @@ const TYPES = {
 };
 
 var CurrentStep = 1;
-const MaxStep = 3;
+const MaxStep = 15;
 
 var CurrentType = TYPES.CODE;
 var CurrentQuestion = null;
