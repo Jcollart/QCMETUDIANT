@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `avoir` (
   KEY `have_qcm0_FK` (`id_qcm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 --
 -- Déchargement des données de la table `avoir`
 --

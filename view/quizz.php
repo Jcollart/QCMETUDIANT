@@ -23,7 +23,7 @@ $maxStep = 15;
     <div class="main position-fixed"></div>
     <div class="my-5">
         <div class="row mx-0">
-            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+        <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
                 <div class="bg-light shadow rounded p-4">
                     <div class="progress" style="">
@@ -32,21 +32,32 @@ $maxStep = 15;
                     <div class="text-center my-4">
                         <img src="../public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
                     </div>
-                    <form method="post">
+                    <form class="" method="post">
                         <h2 class="h4 text-center">
                             <span class="badge badge-pill badge-dark" style="padding: .5rem 1rem;">
-                                Étape <?= $currentStep ?> / <?= $maxStep ?>
+                                Étape <span class="cStep">?</span> / <span class="mStep">?</span>
                             </span>
                         </h2>
                         <hr>
-                        <div class="my-4 form-group">
-                            <label class="font-weight-bold">Code d'accès</label><br>
-                            <input class="form-control" type="text" placeholder="****" name="access_code" required maxlength="4"/>
+                        <div class="my-4 alert-holder">
+
+                        </div>
+                        <div class="my-4 form-group holder">
+                            <div class="text-center w-full">
+                                <div class="spinner-border text-danger" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
                         </div>
                     </form>
+                    <div class="finish text-center">
+                        <h3 class="h5">C'est terminé !</h3>
+                        <p class="responses"><span class="count">0</span> Bonnes réponses</p>
+                        <p class="timer">Temps: <span class="time">0</span></p>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
@@ -59,20 +70,13 @@ $maxStep = 15;
     </div> -->
     <div class="map">
         <!-- <h3>Erreur quand la map est en display none</h3> -->
-        <div class="row mx-0">
-            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
-            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-0 position-relative">
+        <div class="row mx-0 mb-4">
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+            <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0 position-relative">
                 <div class="position-absolute blur">
                     <div class="d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="text-center">
-                        <p>Lorsque vous arrivez sur un des endroits situés sur la carte, vous avez accès à un code <br> 
-                           que vous devez entrer (si vous entrez un mauvais code vous serez prévenu par un message <br>
-                           d'erreur) pour pouvoir acceder à la question correspondant à l'endroit où vous etes.<br>
-                           Vous avez le choix entre 3 reponses. Une fois la réponse choisie, vous devez valider <br>
-                           en appuyant sur le bouton. Ce qui vous permettra de choisir un autre point sur la carte<br>
-                           et ainsi de suite. Le temps de l'épreuve se déclenchera à l'entrée du premier code et <br>
-                           s'arretera à la validation de la derniere reponse.<br>
-                           <font size="+2" >BON COURAGE ET AMUSEZ VOUS BIEN !!</font> </p>
+
                         <button class="btn btn-light shadow" onclick="showMap()">Voir la carte</button>
                         </div>
                     </div>
@@ -84,7 +88,7 @@ $maxStep = 15;
                     style="">
                 </iframe>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
     </div>
 
@@ -92,7 +96,12 @@ $maxStep = 15;
 
 
 
-
+    <!-- <p class="px-5">Lorsque vous arrivez sur un des endroits situé sur la carte, vous avez accès à un code
+                           permettant d'acceder à la question correspondante.
+                           Vous avez le choix entre 3 reponses. Attention toutefois, une fois la question validée vous ne pourrez pas revenir sur votre choix.
+                           Le chrono de votre groupe se déclenchera à l'entrée du premier code et s'arretera à la validation de la derniere reponse.
+                        </p>
+                        <hr> -->
 
 
 
@@ -137,6 +146,7 @@ $maxStep = 15;
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+        <script src="../public/js/process.js"></script>
         <script>
             function showMap() {
                 $('.blur').fadeOut();
