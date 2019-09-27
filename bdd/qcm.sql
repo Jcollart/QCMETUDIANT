@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 26 sep. 2019 à 14:32
--- Version du serveur :  5.7.26
--- Version de PHP :  7.3.7
+-- Hôte : localhost
+-- Généré le :  ven. 27 sep. 2019 à 11:44
+-- Version du serveur :  10.3.15-MariaDB
+-- Version de PHP :  7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,12 +28,9 @@ SET time_zone = "+00:00";
 -- Structure de la table `appartenir`
 --
 
-DROP TABLE IF EXISTS `appartenir`;
-CREATE TABLE IF NOT EXISTS `appartenir` (
+CREATE TABLE `appartenir` (
   `id` int(11) NOT NULL,
-  `id_question` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`id_question`),
-  KEY `belong_to_question0_FK` (`id_question`)
+  `id_question` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -92,14 +89,10 @@ INSERT INTO `appartenir` (`id`, `id_question`) VALUES
 -- Structure de la table `avoir`
 --
 
-DROP TABLE IF EXISTS `avoir`;
-CREATE TABLE IF NOT EXISTS `avoir` (
+CREATE TABLE `avoir` (
   `id` int(11) NOT NULL,
-  `id_qcm` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`id_qcm`),
-  KEY `have_qcm0_FK` (`id_qcm`)
+  `id_qcm` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Déchargement des données de la table `avoir`
@@ -268,38 +261,16 @@ INSERT INTO `etudiant` (`id_etudiant`, `nom`, `prenom`, `password`, `email`, `mo
 (169, 'BOURGAIN', 'Emma', 'mathilde', 'emma.bourgain@outlook.fr', '0652818517', '4', '2166335b635d52f14924222516cda291', '1', 'LMDS', 'Akatsuki'),
 (170, 'LELAURIN', 'LÃ©a', 'mathilde', 'lelaurinlea15@gmail.com', '0787741765', '5', '1950637f5b537586daf00dc0c9a1680e', '0', 'LMDS', 'Akatsuki');
 
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `etudiant`
---
-ALTER TABLE `etudiant`
-  ADD PRIMARY KEY (`id_etudiant`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `etudiant`
---
-ALTER TABLE `etudiant`
-  MODIFY `id_etudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;COMMIT;
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `qcm`
 --
 
-DROP TABLE IF EXISTS `qcm`;
-CREATE TABLE IF NOT EXISTS `qcm` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titre` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+CREATE TABLE `qcm` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `qcm`
@@ -314,14 +285,12 @@ INSERT INTO `qcm` (`id`, `titre`) VALUES
 -- Structure de la table `question`
 --
 
-DROP TABLE IF EXISTS `question`;
-CREATE TABLE IF NOT EXISTS `question` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `question` (
+  `id` int(11) NOT NULL,
   `label_question` varchar(255) NOT NULL,
   `question` text NOT NULL,
-  `code` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+  `code` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `question`
@@ -350,13 +319,11 @@ INSERT INTO `question` (`id`, `label_question`, `question`, `code`) VALUES
 -- Structure de la table `reponse`
 --
 
-DROP TABLE IF EXISTS `reponse`;
-CREATE TABLE IF NOT EXISTS `reponse` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reponse` (
+  `id` int(11) NOT NULL,
   `reponse` text NOT NULL,
-  `valid` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=latin1;
+  `valid` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `reponse`
@@ -408,6 +375,101 @@ INSERT INTO `reponse` (`id`, `reponse`, `valid`) VALUES
 (147, 'des têtes', 1),
 (148, 'des soleils', 0),
 (149, 'des palmes', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `resultat`
+--
+
+CREATE TABLE `resultat` (
+  `id` int(11) NOT NULL,
+  `nom_team` varchar(255) NOT NULL,
+  `good` int(11) NOT NULL,
+  `final_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `appartenir`
+--
+ALTER TABLE `appartenir`
+  ADD PRIMARY KEY (`id`,`id_question`),
+  ADD KEY `belong_to_question0_FK` (`id_question`);
+
+--
+-- Index pour la table `avoir`
+--
+ALTER TABLE `avoir`
+  ADD PRIMARY KEY (`id`,`id_qcm`),
+  ADD KEY `have_qcm0_FK` (`id_qcm`);
+
+--
+-- Index pour la table `etudiant`
+--
+ALTER TABLE `etudiant`
+  ADD PRIMARY KEY (`id_etudiant`);
+
+--
+-- Index pour la table `qcm`
+--
+ALTER TABLE `qcm`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `reponse`
+--
+ALTER TABLE `reponse`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `resultat`
+--
+ALTER TABLE `resultat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `etudiant`
+--
+ALTER TABLE `etudiant`
+  MODIFY `id_etudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+
+--
+-- AUTO_INCREMENT pour la table `qcm`
+--
+ALTER TABLE `qcm`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+
+--
+-- AUTO_INCREMENT pour la table `question`
+--
+ALTER TABLE `question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT pour la table `reponse`
+--
+ALTER TABLE `reponse`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+
+--
+-- AUTO_INCREMENT pour la table `resultat`
+--
+ALTER TABLE `resultat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
