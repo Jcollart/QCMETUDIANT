@@ -4,7 +4,7 @@ const TYPES = {
 };
 
 var CurrentStep = 1;
-const MaxStep = 15;
+const MaxStep = 3;
 
 var CurrentType = TYPES.CODE;
 var CurrentQuestion = null;
@@ -128,6 +128,7 @@ function SetupFinish() {
 }
 
 function IncreaseTimer() {
+    console.log(time);
     time++;
 }
 
@@ -177,7 +178,9 @@ $('form').on('submit', function(e) {
                     SetupAlertBlock("Ce code d'accès est introuvable, essayez en un autre.");
                     SetupCodeBlock();
                 } else {
-                    LaunchTimer();
+                    if (CurrentStep == 1) {
+                        LaunchTimer();
+                    }
 
                     var possibilities = Array();
 
