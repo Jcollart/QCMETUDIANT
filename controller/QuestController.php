@@ -24,6 +24,17 @@
             return $affiche;
         }
 
+        public function showResults(){
+
+            $bdd = new Connexion();
+            $co = $bdd->openConnexion();
+            
+            $sql =('SELECT * FROM resultat');
+            $req = $co->prepare($sql);
+            $req->execute();
+            $affiche = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $affiche;
+        }
 
 
         public function affiche_qcm(){
@@ -82,7 +93,6 @@
             return $q['id'];
         }
 
-        
         public function getQuestion($id){
             $sql = ('
             SELECT q.*, r.reponse, r.valid

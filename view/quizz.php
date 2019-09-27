@@ -25,7 +25,7 @@ $maxStep = 15;
         <div class="row mx-0">
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
-                <div class="bg-light shadow rounded px-4 pt-4 pb-2">
+                <div class="bg-light shadow rounded p-4">
                     <div class="progress" style="">
                         <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -47,9 +47,6 @@ $maxStep = 15;
                             <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
                         </div>
                     </form>
-                    <div class="text-center mt-2">
-                        <i class="fas fa-chevron-down" style="font-size: 1.2em" onclick="showMap()"></i>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
@@ -64,7 +61,15 @@ $maxStep = 15;
         <!-- <h3>Erreur quand la map est en display none</h3> -->
         <div class="row mx-0">
             <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0 col-0"></div>
-            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-0">
+            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-0 position-relative">
+                <div class="position-absolute blur">
+                    <div class="d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="text-center">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at pulvinar nisi, sed pulvinar quam. Donec non congue justo. Nam maximus lorem a nunc dictum, eu efficitur magna pretium</p>
+                        <button class="btn btn-light shadow" onclick="showMap()">Voir la carte</button>
+                        </div>
+                    </div>
+                </div>
                 <iframe class="shadow-lg"
                     width="100%" height="400" frameborder="0"
                     scrolling="no" marginheight="0" marginwidth="0"
@@ -127,7 +132,8 @@ $maxStep = 15;
         </script>
         <script>
             function showMap() {
-                $('.map').fadeToggle();
+                $('.blur').fadeOut();
+                // $('.map').find('iframe').css('opacity','1');
             }
 
             function test(e) {
