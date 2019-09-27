@@ -44,7 +44,7 @@ $avg = $questcontroller->avgResults();
       </div>
 
 
-    <div class="bg-white mx-auto my-2 p-4 shadow-lg result-container">
+    <div class="bg-white mx-auto my-5 p-4 shadow-lg result-container">
         <div class="text-center my-4">
             <img src="../public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
         </div>
