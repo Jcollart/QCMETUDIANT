@@ -158,12 +158,11 @@ function LaunchTimer() {
 $('form').on('submit', function(e) {
     e.preventDefault();
     var datas = {};
-
     switch (CurrentType) {
         case TYPES.CODE:
             datas = {
                 SUBMIT_CODE: true,
-                CODE: $("#access_code").val()
+                CODE: $("#access_code").val().toString()
             };
 
             break;

@@ -18,7 +18,7 @@
 
         $req = $co->prepare($sql);
         $req->execute([
-            'id' => $_POST['CODE']
+            'id' => (string)$_POST['CODE']
         ]);
         $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
         $resultat = json_encode($resultat);
