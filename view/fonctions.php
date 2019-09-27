@@ -9,6 +9,14 @@ $bdd = new Connexion();
 
 <?php
 
+    if(isset($_POST['code'],$_POST['admin'])){
+        if($_POST['code'] == "carolo2019"){
+            echo 'success';
+        } else {
+            echo 'error';
+        }
+    }
+
     if(isset($_POST['id']) && isset($_POST['code'])){
         // Chercher dans le SQL suivant l'id et le code 
          // Donne moi le resultat de la question "$_POST['id']" et du code "$_POST['code']"

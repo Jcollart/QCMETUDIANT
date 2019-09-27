@@ -29,13 +29,23 @@
             $bdd = new Connexion();
             $co = $bdd->openConnexion();
             
-            $sql =('SELECT * FROM resultat');
+            $sql =('SELECT * FROM resultat ORDER BY good DESC');
             $req = $co->prepare($sql);
             $req->execute();
             $affiche = $req->fetchAll(PDO::FETCH_ASSOC);
             return $affiche;
         }
 
+        public function avgResults(){
+            $bdd = new Connexion();
+            $co = $bdd->openConnexion();
+            
+            $sql =('SELECT AVG(good) FROM resultat');
+            $req = $co->prepare($sql);
+            $req->execute();
+            $affiche = $req->fetch();
+            return $affiche;
+        }
 
         public function affiche_qcm(){
 

@@ -53,3 +53,20 @@ h1{
   z-index: 10;
 }
 
+.result .row:nth-of-type(odd){
+  background: rgba(150, 150, 150, 0.2);
+}
+
+.result-container{ width: 66%; display: none; }
+
+@media screen and (max-width: 769px){
+  .result-container{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 579px){
+  .result-container{
+    width: 98%;
+  }
+}
