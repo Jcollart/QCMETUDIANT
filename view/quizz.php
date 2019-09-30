@@ -103,7 +103,7 @@ $maxStep = 15;
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
     </div>
-    =
+
     <div class="map">
         <div class="row mx-0 mb-4">
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
@@ -124,7 +124,7 @@ $maxStep = 15;
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".defi" data-backdrop="static" data-keyboard="false">Small modal</button>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".defi" data-backdrop="static" data-keyboard="false">Small modal</button> -->
 
     <div class="modal fade defi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -135,11 +135,11 @@ $maxStep = 15;
                     <div class="text-center w-100 position-relative" style="height: 150px;">
                         <img src="../public/img/eclair.png" width="150" height="150">
                         <div class="position-absolute w-100 defi-content font-weight-bold">
-                            Prennez votre groupe en photo <span class="text-red">avec un autre téléphone</span> devant une boutique Orange et envoyer le sur Twitter avec le #carolomescouilles
+                            Prennez votre groupe en photo <span class="text-red">avec un autre téléphone</span> devant une boutique Orange et envoyer le sur Twitter avec le #carolo2019
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-danger bg-red mt-4" data-dismiss="modal">Fait <i class="fas fa-check"></i></button>
+                        <button type="button" class="btn btn-danger bg-red mt-4 btn-defi" data-dismiss="modal">Fait <i class="fas fa-check"></i></button>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,6 @@ $maxStep = 15;
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script>
-        // $('#myModal').modal({backdrop: 'static', keyboard: false}) 
         const team = `<?= $_SESSION['nom_team']; ?>`;
     </script>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.0/build/ol.js"></script>

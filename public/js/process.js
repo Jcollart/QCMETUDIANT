@@ -235,6 +235,13 @@ $('form').on('submit', function(e) {
 
                         deleteMarker(fResponse[0].id);
                         SetupAnswerBlock(fResponse[0].label_question, fResponse[0].question, possibilities);
+                        if(fResponse[0].id == 55){
+                            // $('.defi').modal('show');
+                            $('.defi').modal({backdrop: 'static', keyboard: false});
+                            setTimeout(() => {
+                                $('.btn-defi').fadeIn()
+                            }, 20000);
+                        }
                     }
                 }
             },

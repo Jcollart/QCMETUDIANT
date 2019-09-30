@@ -29,6 +29,8 @@ body{
   display: block !important;
 }
 
+.btn-defi{ display: none; }
+
 .bg-red{
   background: #BC3421 !important;
 }
