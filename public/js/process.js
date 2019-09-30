@@ -4,7 +4,7 @@ const TYPES = {
 };
 
 var CurrentStep = 1;
-const MaxStep = 15;
+const MaxStep = 3;
 
 var CurrentType = TYPES.CODE;
 var CurrentQuestion = null;
@@ -12,6 +12,9 @@ var responseCounter = 0;
 
 var time = 0;
 var IntervalRef = null;
+
+var startDate = null;
+var EndDate = null;
 
 var save = {
     Time: time,
@@ -108,7 +111,8 @@ function SetupFinish() {
     const holder = $('form');
     const end = $('.finish');
 
-    let totalSeconds = time;
+    EndDate = new Date();
+    let totalSeconds = Math.floor((new Date(EndDate - startDate))/1000);
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
@@ -120,7 +124,7 @@ function SetupFinish() {
 
     var timer = (hours + ":" + minutes + ":" + seconds);
 
-    clearInterval(IntervalRef);
+    // clearInterval(IntervalRef);
 
     $(holder).hide();
     $(end).fadeIn(500);
@@ -152,7 +156,8 @@ function IncreaseTimer() {
 }
 
 function LaunchTimer() {
-    IntervalRef = setInterval(IncreaseTimer, 1000);
+    //IntervalRef = setInterval(IncreaseTimer, 1000);
+    startDate = new Date();
 }
 
 $('form').on('submit', function(e) {
