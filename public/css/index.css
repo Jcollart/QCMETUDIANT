@@ -62,7 +62,7 @@ h1{
 
 /* .map iframe{ opacity: 0; } */
 .blur{
-  height: 400px;
+  height: 500px;
   width: 96%;
   background: rgba(235,235,235,.9);
   z-index: 10;

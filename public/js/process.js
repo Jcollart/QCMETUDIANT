@@ -205,29 +205,37 @@ $('form').on('submit', function(e) {
                     SetupAlertBlock("Ce code d'accès est introuvable, essayez en un autre.");
                     SetupCodeBlock();
                 } else {
-                    if (CurrentStep == 1) {
-                        LaunchTimer();
+                    var distance = checkDistance(fResponse[0].id)
+
+                    if (distance > 100.001) {
+                        SetupAlertBlock("Vous êtes trop loin de la position reliée a ce code, rapprochez vous pour pouvoir l'utiliser.");
+                        SetupCodeBlock();
+                    } else {
+                        if (CurrentStep == 1) {
+                            LaunchTimer();
+                        }
+
+                        var possibilities = Array();
+
+                        for (let index = 0; index < fResponse.length; index++) {
+                            const element = fResponse[index];
+                            possibilities.push({
+                                title: element.reponse,
+                                is_valid: element.valid
+                            });
+                        }
+
+                        CurrentQuestion = {
+                            title: fResponse[0].label_question,
+                            label: fResponse[0].question,
+                            possibilities: possibilities
+                        }
+
+                        save.Codes.push(datas.CODE);
+
+                        deleteMarker(fResponse[0].id);
+                        SetupAnswerBlock(fResponse[0].label_question, fResponse[0].question, possibilities);
                     }
-
-                    var possibilities = Array();
-
-                    for (let index = 0; index < fResponse.length; index++) {
-                        const element = fResponse[index];
-                        possibilities.push({
-                            title: element.reponse,
-                            is_valid: element.valid
-                        });
-                    }
-
-                    CurrentQuestion = {
-                        title: fResponse[0].label_question,
-                        label: fResponse[0].question,
-                        possibilities: possibilities
-                    }
-
-                    save.Codes.push(datas.CODE);
-
-                    SetupAnswerBlock(fResponse[0].label_question, fResponse[0].question, possibilities);
                 }
             },
             error: function(response) {
