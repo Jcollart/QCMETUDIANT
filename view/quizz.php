@@ -3,8 +3,18 @@ include_once '../controller/QuestController.php';
 if(!isset($_SESSION['nom_team'])){
     header('Location: index.php');
 }
+
 $questcontroller = new QuestController;
 $result = $questcontroller->affiche_quizz(93);
+$bdd = new Connexion();
+$co = $bdd->openConnexion();
+
+$req = $co->prepare('SELECT * FROM resultat WHERE nom_team = :nom_team');
+$req->execute(array(
+    'nom_team' => $_SESSION['nom_team']));
+$done = $req->fetch();
+$class = $done != null ? 'active' : '';
+$req-> closeCursor();
 
 $currentStep = 1;
 $maxStep = 15;
@@ -30,12 +40,21 @@ $maxStep = 15;
         <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
                 <div class="bg-light shadow rounded p-4">
-                    <div class="progress" style="">
-                        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    <?php
+                        if($done == null){
+                            echo '
+                            <div class="progress" style="">
+                                <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            ';
+                        }
+                    ?>
                     <div class="text-center my-4">
                         <img src="../public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
                     </div>
+                    <?php
+                    if($done == null){
+                    ?>
                     <form class="" method="post">
                         <h2 class="h4 text-center">
                             <span class="badge badge-pill badge-dark" style="padding: .5rem 1rem;">
@@ -55,10 +74,16 @@ $maxStep = 15;
                             <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
                         </div>
                     </form>
-                    <div class="finish text-center bg-gradient rounded shadow p-2">
+                    <?php
+                    }
+                    ?>
+                    <div class="finish text-center bg-gradient rounded shadow p-2 <?= $class; ?>">
                         <h3 class="h5 font-weight-bold">Vous avez fini le quizz !</h3>
                         <p class="responses">Rendez-vous au point de départ pour voir votre classement.</p>
-                        <p class="timer">Temps écoulé: <span class="time">0</span></p>
+                        <p class="timer">
+                            Temps écoulé:
+                            <span class="time"><?= $done == null ? 0 : $done['final_time']; ?></span>
+                        </p>
                     </div>
                 </div>
             </div>

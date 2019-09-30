@@ -25,6 +25,10 @@ body{
   margin-bottom: -55px;
 }
 
+.active{
+  display: block !important;
+}
+
 .bg-red{
   background: #BC3421 !important;
 }

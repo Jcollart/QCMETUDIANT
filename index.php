@@ -1,7 +1,32 @@
 <?php
   include 'controller/QuestController.php';
-  
-?>
+  $questcontroller = new QuestController;
+  $bdd = new Connexion();
+  $co = $bdd->openConnexion();
+
+  if(isset($_POST['nom_team'],$_POST['password'])){
+    $nom_team = $_POST['nom_team'];
+    $password = $_POST['password'];
+
+    $req = $co->prepare('SELECT id_etudiant, password FROM etudiant WHERE nom_team = :nom_team');
+    $req->execute(array(
+        'nom_team' => $nom_team));
+    $resultat = $req->fetch();
+    $req-> closeCursor();
+
+    if ($_POST['password'] == $resultat['password']) {
+      $_SESSION['id_etudiant'] = $resultat['id_etudiant'];
+      $_SESSION['nom_team'] = $nom_team;
+      header('Location: ./view/quizz.php');
+    }
+    else {
+        $error = 'Mauvais identifiant ou mot de passe !';
+    }
+
+  }
+
+
+  ?>
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -25,9 +50,14 @@
               <div class="text-center my-4">
                 <img src="./public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
               </div>
-              <form action="view/validation-admin.php" method="post">
+              <form action="" method="post">
                   <h2 class="h4 text-center">CONNEXION AU QCM</h2>
                   <hr>
+                  <?php
+                  if(isset($error)){
+                    echo '<div class="alert alert-danger">'.$error.'</div>';
+                  }
+                  ?>
                   <div class="my-4 form-group">
                     <label class="font-weight-bold">Nom de l'equipe</label><br>
                     <input class="form-control" type="text" placeholder="Entrer le nom d'utilisateur" name="nom_team" required/>
