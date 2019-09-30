@@ -20,6 +20,11 @@ body{
   z-index: -1;
 }
 
+.defi-content{
+  top: 55px;
+  margin-bottom: -55px;
+}
+
 .bg-red{
   background: #BC3421 !important;
 }

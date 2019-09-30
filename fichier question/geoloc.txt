@@ -1,0 +1,15 @@
+Tour du roy: 49.76083,4.71370
+Hôtel de ville: 49.76019,4.71931
+Basilique: 49.76095,4.71582
+La Macérienne: 49.76243,4.71331
+28, cours briand: 49.76932,4.71931
+Théâtre: 49.77305,4.71846
+Avenue d'Arches: 49.76321,4.71908
+Grand marionnetiste: 49.77253,4.72165
+Musée de l'ardenne: 49.77272,4.72145
+Musée de Rimbaud: 49.77573,4.72205
+Quai Rimbaud: 49.77573,4.72205
+Statue Gonzague: 49.77083,4.71946
+Maison Rimbaud: 49.77148,4.71953
+Boulangerie: 49.77301,4.72048
+Mairie: 49.77353,4.71985
