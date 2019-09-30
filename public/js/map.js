@@ -16,77 +16,92 @@ var Markers = [
     {
         question_id: 44,
         lat: 49.76083,
-        lng: 4.71370
+        lng: 4.71370,
+        is_enabled: true,
     },
     {
         question_id: 45,
         lat: 49.76019,
-        lng: 4.71931
+        lng: 4.71931,
+        is_enabled: true,
     },
     {
         question_id: 46,
         lat: 49.76095,
-        lng: 4.71582
+        lng: 4.71582,
+        is_enabled: true,
     },
     {
         question_id: 47,
         lat: 49.76243,
-        lng: 4.71331
+        lng: 4.71331,
+        is_enabled: true,
     },
     {
         question_id: 48,
         lat: 49.76932,
-        lng: 4.71931
+        lng: 4.71931,
+        is_enabled: true,
     },
     {
         question_id: 49,
         lat: 49.77305,
-        lng: 4.71846
+        lng: 4.71846,
+        is_enabled: true,
     },
     {
         question_id: 50,
         lat: 49.76321,
-        lng: 4.71908
+        lng: 4.71908,
+        is_enabled: true,
     },
     {
         question_id: 51,
         lat: 49.77253,
-        lng: 4.72165
+        lng: 4.72165,
+        is_enabled: true,
     },
     {
         question_id: 52,
         lat: 49.77272,
-        lng: 4.72145
+        lng: 4.72145,
+        is_enabled: true,
     },
     {
         question_id: 53,
         lat: 49.77573,
-        lng: 4.72205
+        lng: 4.72205,
+        is_enabled: true,
     },
     {
         question_id: 54,
         lat: 49.77655,
-        lng: 4.71974
+        lng: 4.71974,
+        is_enabled: true,
     },
     {
         question_id: 55,
         lat: 49.77083,
-        lng: 4.71946
+        lng: 4.71946,
+        is_enabled: true,
     },
     {
         question_id: 56,
         lat: 49.77148,
-        lng: 4.71953
+        lng: 4.71953,
+        is_enabled: true,
     },
     {
         question_id: 57,
         lat: 49.77301,
-        lng: 4.72048
+        lng: 4.72048,
+        is_enabled: true,
     },
     {
         question_id: 58,
         lat: 49.77353,
-        lng: 4.71985
+        lng: 4.71985,
+        is_enabled: true,
     }
 ];
 
@@ -136,21 +151,23 @@ function createMarkers() {
         var longitude = item.lng;
         var latitude = item.lat;
 
-        var iconFeature = new ol.Feature({
-            geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857'))
-        });
+        if (item.is_enabled) {
+            var iconFeature = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.transform([longitude, latitude], 'EPSG:4326', 'EPSG:3857'))
+            });
 
-        var iconStyle = new ol.style.Style({
-            image: new ol.style.Icon(({
-                anchor: [0.5, 1],
-                src: "http://cdn.mapmarker.io/api/v1/pin?size=32&hoffset=1&background=DB2B39"
-            }))
-        });
+            var iconStyle = new ol.style.Style({
+                image: new ol.style.Icon(({
+                    anchor: [0.5, 1],
+                    src: "http://cdn.mapmarker.io/api/v1/pin?size=32&hoffset=1&background=DB2B39"
+                }))
+            });
 
-        iconFeature.setStyle(iconStyle);
-        features.push(iconFeature);
+            iconFeature.setStyle(iconStyle);
+            features.push(iconFeature);
 
-        Markers[i].Marker = iconFeature;
+            Markers[i].Marker = iconFeature;
+        }
     }
 
     var vectorSource = new ol.source.Vector({
@@ -172,11 +189,13 @@ function deleteMarker(QuestionId) {
 
         if (item.question_id == QuestionId) {
             mDatas = Markers[i];
+            Markers[i].is_enabled = false;
         }
     }
 
     if (mDatas) {
-        
+        macarte.removeLayer(MarkerLayer);
+        createMarkers();
     }
 }
 
