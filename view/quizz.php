@@ -57,10 +57,10 @@ $maxStep = 15;
                             <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
                         </div>
                     </form>
-                    <div class="finish text-center">
-                        <h3 class="h5">C'est terminé !</h3>
-                        <p class="responses"><span class="count">0</span> Bonnes réponses</p>
-                        <p class="timer">Temps: <span class="time">0</span></p>
+                    <div class="finish text-center bg-gradient rounded shadow p-2">
+                        <h3 class="h5 font-weight-bold">Vous avez fini le quizz !</h3>
+                        <p class="responses">Rendez-vous au point de départ pour voir votre classement.</p>
+                        <p class="timer">Temps écoulé: <span class="time">0</span></p>
                     </div>
                 </div>
             </div>
