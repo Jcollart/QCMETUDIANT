@@ -17,6 +17,18 @@ $maxStep = 15;
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/index.css">
     <link rel="stylesheet" href="../public/css/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.0/css/ol.css" type="text/css">
+    <style type="text/css">
+        #map {
+            /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+            height: 500px;
+            width: 80%;
+        }
+
+        #map canvas {
+            position: relative !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,8 +39,10 @@ $maxStep = 15;
         <div class="map">
             <h1>QCM CAROLO EXPRESS</h1>
             <center class="mt-4">
-                <iframe width="90%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=4.679832458496095%2C49.75884086990659%2C4.751501083374023%2C49.78442298138881&amp;layer=transportmap" style="">
-                </iframe>
+                <!-- <iframe width="90%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=4.679832458496095%2C49.75884086990659%2C4.751501083374023%2C49.78442298138881&amp;layer=transportmap" style="">
+                </iframe> -->
+
+                <div id="map"></div>
             </center>
         </div>
         <br>
@@ -82,6 +96,8 @@ $maxStep = 15;
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.0/build/ol.js"></script>
+    <script src="../public/js/map.js"></script>
     <script src="../public/js/process.js"></script>
     <script>
         function test(e) {

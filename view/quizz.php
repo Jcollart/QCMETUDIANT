@@ -1,6 +1,6 @@
 <?php
 include_once '../controller/QuestController.php';
-if(!isset($_SESSION['nom_team'])){
+if (!isset($_SESSION['nom_team'])) {
     header('Location: index.php');
 }
 
@@ -11,10 +11,11 @@ $co = $bdd->openConnexion();
 
 $req = $co->prepare('SELECT * FROM resultat WHERE nom_team = :nom_team');
 $req->execute(array(
-    'nom_team' => $_SESSION['nom_team']));
+    'nom_team' => $_SESSION['nom_team']
+));
 $done = $req->fetch();
 $class = $done != null ? 'active' : '';
-$req-> closeCursor();
+$req->closeCursor();
 
 $currentStep = 1;
 $maxStep = 15;
@@ -31,49 +32,61 @@ $maxStep = 15;
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/index.css">
     <link rel="stylesheet" href="../public/css/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.0/css/ol.css" type="text/css">
+    <style type="text/css">
+        #map {
+            /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+            height: 500px;
+            width: 100%;
+        }
+
+        #map canvas {
+            position: relative !important;
+        }
+    </style>
 </head>
 
 <body>
     <div class="main position-fixed"></div>
     <div class="my-5">
         <div class="row mx-0">
-        <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
+            <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 col-0">
                 <div class="bg-light shadow rounded p-4">
                     <?php
-                        if($done == null){
-                            echo '
+                    if ($done == null) {
+                        echo '
                             <div class="progress" style="">
                                 <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             ';
-                        }
+                    }
                     ?>
                     <div class="text-center my-4">
                         <img src="../public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
                     </div>
                     <?php
-                    if($done == null){
-                    ?>
-                    <form class="" method="post">
-                        <h2 class="h4 text-center">
-                            <span class="badge badge-pill badge-dark" style="padding: .5rem 1rem;">
-                                Étape <span class="cStep">?</span> / <span class="mStep">?</span>
-                            </span>
-                        </h2>
-                        <hr>
-                        <div class="my-4 alert-holder"></div>
-                        <div class="my-4 form-group holder">
-                            <div class="text-center w-full">
-                                <div class="spinner-border text-danger" role="status">
-                                    <span class="sr-only">Loading...</span>
+                    if ($done == null) {
+                        ?>
+                        <form class="" method="post">
+                            <h2 class="h4 text-center">
+                                <span class="badge badge-pill badge-dark" style="padding: .5rem 1rem;">
+                                    Étape <span class="cStep">?</span> / <span class="mStep">?</span>
+                                </span>
+                            </h2>
+                            <hr>
+                            <div class="my-4 alert-holder"></div>
+                            <div class="my-4 form-group holder">
+                                <div class="text-center w-full">
+                                    <div class="spinner-border text-danger" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
-                        </div>
-                    </form>
+                            <div>
+                                <button class="btn btn-dark btn-block bg-red border-0" name="submit" type="submit">Confirmer</button>
+                            </div>
+                        </form>
                     <?php
                     }
                     ?>
@@ -90,7 +103,7 @@ $maxStep = 15;
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
     </div>
-=
+    =
     <div class="map">
         <div class="row mx-0 mb-4">
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
@@ -99,16 +112,13 @@ $maxStep = 15;
                     <div class="d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="text-center">
 
-                        <button class="btn btn-light shadow" onclick="showMap()">Voir la carte</button>
+                            <button class="btn btn-light shadow" onclick="showMap()">Voir la carte</button>
                         </div>
                     </div>
                 </div>
-                <iframe class="shadow-lg"
-                    width="100%" height="400" frameborder="0"
-                    scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=4.679832458496095%2C49.75884086990659%2C4.751501083374023%2C49.78442298138881&amp;layer=transportmap" 
-                    style="">
-                </iframe>
+                <!-- <iframe class="shadow-lg" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=4.679832458496095%2C49.75884086990659%2C4.751501083374023%2C49.78442298138881&amp;layer=transportmap" style="">
+                </iframe> -->
+                <div id="map"></div>
             </div>
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 col-0"></div>
         </div>
@@ -118,23 +128,23 @@ $maxStep = 15;
 
     <div class="modal fade defi" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-                <div class="modal-content p-2">
-                    <h2 class="modal-title text-uppercase text-red font-weight-bold text-center" id="exampleModalLabel">Défi !</h2>
-                    <hr style="border: 1px solid red; width: 100%;">
-                    <div class="modal-body">
-                        <div class="text-center w-100 position-relative" style="height: 150px;">
-                            <img src="../public/img/eclair.png" width="150" height="150">
-                            <div class="position-absolute w-100 defi-content font-weight-bold">
-                                Prennez votre groupe en photo <span class="text-red">avec un autre téléphone</span> devant une boutique Orange et envoyer le sur Twitter avec le #carolomescouilles
-                            </div>
+            <div class="modal-content p-2">
+                <h2 class="modal-title text-uppercase text-red font-weight-bold text-center" id="exampleModalLabel">Défi !</h2>
+                <hr style="border: 1px solid red; width: 100%;">
+                <div class="modal-body">
+                    <div class="text-center w-100 position-relative" style="height: 150px;">
+                        <img src="../public/img/eclair.png" width="150" height="150">
+                        <div class="position-absolute w-100 defi-content font-weight-bold">
+                            Prennez votre groupe en photo <span class="text-red">avec un autre téléphone</span> devant une boutique Orange et envoyer le sur Twitter avec le #carolomescouilles
                         </div>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-danger bg-red mt-4" data-dismiss="modal">Fait <i class="fas fa-check"></i></button>
-                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger bg-red mt-4" data-dismiss="modal">Fait <i class="fas fa-check"></i></button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -146,6 +156,8 @@ $maxStep = 15;
         // $('#myModal').modal({backdrop: 'static', keyboard: false}) 
         const team = `<?= $_SESSION['nom_team']; ?>`;
     </script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.0/build/ol.js"></script>
+    <script src="../public/js/map.js"></script>
     <script src="../public/js/process.js"></script>
     <script>
         function showMap() {
