@@ -75,8 +75,8 @@ var Markers = [
     },
     {
         question_id: 54,
-        lat: 49.77655,
-        lng: 4.71974,
+        lat: 49.77574,
+        lng: 4.72161,
         is_enabled: true,
     },
     {
