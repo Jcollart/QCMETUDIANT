@@ -63,6 +63,8 @@ $maxStep = 15;
                     }
                     ?>
                     <div class="text-center my-4">
+                        <h3 class="h4 text-red bold">Carolo Express</h3>
+                        <h4 class="h5 mb-4">Rentrée des étudiants 2019</h4>
                         <img src="../public/img/logoetudiant.png" width="150" height="150" class="rounded-circle shadow">
                     </div>
                     <?php
